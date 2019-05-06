@@ -1,12 +1,24 @@
+/* global GitHub */
+
+// Init Github
+const github =  new GitHub;
+
+
 // Search input
 const searchUser = document.getElementById('searchUser');
+
+
 
 // Search input event listener
 searchUser.addEventListener('keyup', (e) => {
     // Get input text
-    const userText =  e.target.value;
-    
+    const userText = e.target.value;
+
     if (userText !== '') {
-        console.log(userText);
+        // Make http call
+        github.getUser(userText)
+            .then(data => {
+                console.log(data);
+            });
     }
 });

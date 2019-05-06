@@ -13,8 +13,7 @@ class GitHub {
         
         return {
             profile
-        }
-        
+        };
         
     }
 }
