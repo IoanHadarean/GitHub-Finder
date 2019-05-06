@@ -28,6 +28,16 @@ searchUser.addEventListener('keyup', (e) => {
                     ui.showProfile(data.profile);
                 }
             });
+        github.getRepos(userText)
+            .then(data => {
+                if (data.repos.message === 'Not Found') {
+                    // Show alert
+                    ui.showAlert('User has no repos', 'alert alert-danger');
+                } else {
+                    // Show repos
+                    
+                }
+            });
     }
     else {
         // Clear profile
