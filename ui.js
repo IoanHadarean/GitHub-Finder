@@ -33,13 +33,11 @@ class UI {
         `;
     }
     
-    // Clear Profile
-    clearProfile() {
-        this.profile.innerHTML = '';
-    }
     
     // Show Alert
     showAlert(message, className) {
+        // Clear any remaining alerts
+        this.clearAlert();
         // Create div
         const div = document.createElement('div');
         // Add classes
@@ -52,5 +50,19 @@ class UI {
         const search = document.querySelector('.search');
         // Insert alert
         container.insertBefore(div, search);
+    }
+    
+    // Clear alert message
+    clearAlert() {
+        const currentAlert = document.querySelector('.alert');
+        
+        if(currentAlert) {
+            currentAlert.remove();
+        }
+    }
+    
+     // Clear Profile
+    clearProfile() {
+        this.profile.innerHTML = '';
     }
 }
