@@ -14,18 +14,13 @@ class GitHub {
         const profileResponse =  await fetch(`https://api.github.com/users/${user}?client_id=${this.clientId}&client_secret=${this.clientSecret}`);
         const profile =  await profileResponse.json();
         
-        return {
-            profile
-        };
-    }
-    
-    async getRepos(user) {
-        const repoResponse =  await fetch(`https://api.github.com/users/${user}/repos?client_id=${this.clientId}&client_secret=${this.clientSecret}`);
-        const repos =  await repoResponse.json();
+        
+        const reposResponse =  await fetch(`https://api.github.com/users/${user}/repos?per_page=${this.reposCount}&sort-${this.reposSort}&?client_id=${this.clientId}&client_secret=${this.clientSecret}`);
+        const repos =  await reposResponse.json();
         
         return {
+            profile,
             repos
         };
     }
-    
 }

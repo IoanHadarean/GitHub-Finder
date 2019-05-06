@@ -24,18 +24,9 @@ searchUser.addEventListener('keyup', (e) => {
                     // Show alert
                     ui.showAlert('User not found', 'alert alert-danger');
                 }else {
-                    // Show profile
+                    // Show profile and repos
                     ui.showProfile(data.profile);
-                }
-            });
-        github.getRepos(userText)
-            .then(data => {
-                if (data.repos.message === 'Not Found') {
-                    // Show alert
-                    ui.showAlert('User has no repos', 'alert alert-danger');
-                } else {
-                    // Show repos
-                    
+                    ui.showRepos(data.repos);
                 }
             });
     }
