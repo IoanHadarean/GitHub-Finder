@@ -1,7 +1,9 @@
 /* global GitHub */
+/* global UI */
 
 // Init Github
 const github =  new GitHub;
+const ui =  new UI;
 
 
 // Search input
@@ -18,7 +20,15 @@ searchUser.addEventListener('keyup', (e) => {
         // Make http call
         github.getUser(userText)
             .then(data => {
-                console.log(data);
+                if (data.profile.message === 'Not Found') {
+                    // Show alert
+                }else {
+                    // Show profile
+                    ui.showProfile(data.profile);
+                }
             });
+    }
+    else {
+        // Clear profile
     }
 });
